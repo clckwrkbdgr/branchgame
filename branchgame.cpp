@@ -99,7 +99,7 @@ void BranchGame::generateField()
 	}
 
 	int deadLinkCount = (width() - 1) * height() + width() * (height() - 1);
-	deadLinkCount = deadLinkCount * 3 / 4;
+	deadLinkCount = deadLinkCount * 3 / 4; // TODO magic number
 	for(int i = 0; i < deadLinkCount; ++i) {
 		if(qrand() % 2) {
 			QPoint p(qrand() % width(), qrand() % height() - 1);

@@ -1,26 +1,17 @@
 #pragma once
-#include <QtGui/QWidget>
-#include <QtCore/QMap>
 
-class BranchGame;
-class Image;
+#include <QtGui/QMainWindow>
 
-class MainWindow : public QWidget {
+#include "ui_mainwindow.h"
+
+class MainWindow : public QMainWindow {
 	Q_OBJECT
 	Q_DISABLE_COPY(MainWindow);
 public:
 	MainWindow(QWidget * parent = 0);
-	virtual ~MainWindow();
-
-protected:
-	virtual void keyPressEvent(QKeyEvent*);
-	virtual void mousePressEvent(QMouseEvent*);
-	virtual void mouseMoveEvent(QMouseEvent*);
-	virtual void paintEvent(QPaintEvent*);
+	virtual ~MainWindow() {}
+private slots:
+	void gameFinished();
 private:
-	BranchGame * game;
-	QMap<int, QImage*> spritesOff;
-	QMap<int, QImage*> spritesOn;
-
-	void makeSprites();
+	Ui::MainWindow ui;
 };
