@@ -2,6 +2,7 @@
 #include <QtGui/QApplication>
 #include <QtCore/QTranslator>
 #include <QtCore/QSettings>
+#include <QtCore/QTime>
 #include <QtGui/QMessageBox>
 #include <QtGui/QCloseEvent>
 
@@ -94,8 +95,9 @@ void MainWindow::gameFinished()
 	statusBar()->showMessage(tr("Game is finished"));
 }
 
-int main(int argc, char ** argv) {
-	qsrand(time(NULL));
+int main(int argc, char ** argv)
+{
+	qsrand(QTime::currentTime().msec());
 
 	QApplication app(argc, argv);
 	app.setApplicationName("branchgame");
