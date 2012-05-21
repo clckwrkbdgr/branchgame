@@ -61,10 +61,9 @@ BranchGame::BranchGame(const QSize & fieldSize)
 	flags(field.size(), Branch::CELL_EMPTY)
 {
 	nextStates = makeNextStatesMap();
-
 	generateField();
 
-	while(rCell(start) == Branch::NONE) {
+	while(start.isNull() || rCell(start) == Branch::NONE) {
 		start = QPoint(
 				1 + qrand() % (width() - 2),
 				1 + qrand() % (height() - 2)
@@ -121,7 +120,8 @@ void BranchGame::generateField()
 	}
 }
 
-bool BranchGame::isValid(int x, int y) const {
+bool BranchGame::isValid(int x, int y) const
+{
 	return (0 <= x && x < size.width()) &&
 		(0 <= y && y < size.height());
 }
@@ -133,7 +133,8 @@ int BranchGame::cell(int x, int y) const
 	return rCell(x, y);
 }
 
-bool BranchGame::isLinked(const QPoint & a, const QPoint & b) const {
+bool BranchGame::isLinked(const QPoint & a, const QPoint & b) const
+{
 	int cellA = rCell(a);
 	int cellB = rCell(b);
 	QPoint d = (a - b);

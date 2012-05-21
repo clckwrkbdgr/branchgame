@@ -9,7 +9,7 @@ class BranchWidget : public QWidget {
 	Q_OBJECT
 	Q_DISABLE_COPY(BranchWidget);
 public:
-	BranchWidget(QWidget * parent = 0);
+	BranchWidget(const QSize & newFieldSize, const QSize & newCellSize, QWidget * parent = 0);
 	virtual ~BranchWidget();
 
 	virtual QSize minimumSizeHint() const;
@@ -17,6 +17,7 @@ public:
 
 signals:
 	void gameFinished();
+	void requestToClose();
 
 protected:
 	virtual void keyPressEvent(QKeyEvent*);
@@ -26,6 +27,8 @@ private:
 	BranchGame * game;
 	QMap<int, QImage*> spritesOff;
 	QMap<int, QImage*> spritesOn;
+	const QSize fieldSize;
+	const QSize cellSize;
 
 	void makeSprites();
 };
